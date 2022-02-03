@@ -1,5 +1,5 @@
 import React from 'react';
-import PrimarySearchAppBar from '../nav/AppBar';
+import PrimarySearchAppBar from '../components/nav/AppBar';
 
 const Alerte = () => {
 	return (

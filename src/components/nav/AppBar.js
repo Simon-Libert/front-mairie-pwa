@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
+import HomeIcon from '@mui/icons-material/Home';
+import AddAlertIcon from '@mui/icons-material/AddAlert';
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Paper from '@mui/material/Paper';
 
 export default function FixedBottomNavigation() {
@@ -23,9 +24,22 @@ export default function FixedBottomNavigation() {
 					onChange={(event, newValue) => {
 						setValue(newValue);
 					}}>
-					<BottomNavigationAction label='Login' icon={<RestoreIcon />} />
-					<BottomNavigationAction label='Alerte' icon={<FavoriteIcon />} />
-					<BottomNavigationAction label='Profil' icon={<ArchiveIcon />} />
+					<BottomNavigationAction
+						label='Accueil'
+						icon={<HomeIcon sx={{ color: 'black' }} />}
+					/>
+					<BottomNavigationAction
+						label='Alerte'
+						icon={<AddAlertIcon sx={{ color: 'black' }} />}
+					/>
+					<BottomNavigationAction
+						label='Login'
+						icon={<VpnKeyIcon sx={{ color: 'black' }} />}
+					/>
+					<BottomNavigationAction
+						label='Profil'
+						icon={<AccountCircleIcon sx={{ color: 'black' }} />}
+					/>
 				</BottomNavigation>
 			</Paper>
 		</Box>

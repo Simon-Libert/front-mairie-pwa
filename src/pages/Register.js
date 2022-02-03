@@ -1,7 +1,7 @@
 import React from 'react';
-import PrimarySearchAppBar from '../nav/AppBar';
+import PrimarySearchAppBar from '../components/nav/AppBar';
 import { useForm, FormProvider } from 'react-hook-form';
-import SignUpForm from './Form';
+import FormRegister from '../components/forms/FormRegister';
 
 const MyForm = () => {
 	const form = (event) => {};
@@ -9,7 +9,7 @@ const MyForm = () => {
 	return (
 		<FormProvider {...form}>
 			<PrimarySearchAppBar />
-			<SignUpForm />
+			<FormRegister />
 		</FormProvider>
 	);
 };
