@@ -9,13 +9,13 @@ body {
  
 }
 
-body {
+/* body {
   background-image: url(assets/fond5.webp);
   background-position: center center;
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

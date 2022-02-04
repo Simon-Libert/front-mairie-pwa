@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { makeStyles } from '@emotion/styled';
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import ButtonValidation from '../buttons/ButtonValidation';
-import { border } from '@mui/system';
+import RegisterButton from '../buttons/RegisterButton';
+import { useNavigate } from 'react-router';
 
 const schema = yup
 	.object()
@@ -15,19 +14,25 @@ const schema = yup
 		lastName: yup.string().required('Champ requis'),
 		address: yup.string().required('Champ requis'),
 		postCode: yup
-			.number('Merci de saisir un code postal valide.')
-			.integer()
+			.string('Merci de saisir un code postal valide.')
+			.min(5)
+			.max(5)
 			.required('Champ requis'),
 		city: yup.string().required('Champ requis'),
 		phone: yup
-			.number('Merci de saisir un numéro de téléphone valide.')
+			.string('Merci de saisir un numéro de téléphone valide.')
+			.min(10)
+			.max(10)
 			.required('Champ requis'),
 		email: yup.string().email('Merci de saisir un email valide.').required('Champ requis'),
 		password: yup
 			.string()
 			.min(6)
 			.max(15)
-			.matches(/^[0-9A-Za-z]*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][0-9a-zA-Z]*$/gim)
+			.matches(
+				/^[0-9A-Za-z]*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][0-9a-zA-Z]*$/gim,
+				'Le mot de passe doit contenir au moins une majuscule et un caractère spécial'
+			)
 			.required('Champ requis'),
 		passwordConfirm: yup
 			.string()
@@ -42,8 +47,11 @@ export default function FormRegister() {
 	});
 
 	const onSubmit = (data) => {
-		console.log(data); // faire un axios post pour envoyer les données à l'api
+		console.log(data);
+		navigate('/'); // faire un axios post pour envoyer les données à l'api
 	};
+
+	let navigate = useNavigate();
 
 	return (
 		<div className='MyFormRegister'>
@@ -72,6 +80,7 @@ export default function FormRegister() {
 								id='standard-required'
 								label='Nom'
 								variant='standard'
+								color='secondary'
 								value={value}
 								onChange={onChange}
 								error={!!error}
@@ -254,7 +263,7 @@ export default function FormRegister() {
 						rules={{ required: 'Merci de confirmer votre password.' }}
 					/>
 				</div>
-				<ButtonValidation />
+				<RegisterButton />
 			</Box>
 		</div>
 	);

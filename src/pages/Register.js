@@ -1,16 +1,16 @@
 import React from 'react';
 import PrimarySearchAppBar from '../components/nav/AppBar';
-import { useForm, FormProvider } from 'react-hook-form';
-import FormRegister from '../components/forms/FormRegister';
+import { FormProvider } from 'react-hook-form';
+import RegisterForm from '../components/forms/RegisterForm';
 
-const MyForm = () => {
+const MyRegisterForm = () => {
 	const form = (event) => {};
 
 	return (
 		<FormProvider {...form}>
 			<PrimarySearchAppBar />
-			<FormRegister />
+			<RegisterForm />
 		</FormProvider>
 	);
 };
-export default MyForm;
+export default MyRegisterForm;

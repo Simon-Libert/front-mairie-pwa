@@ -38,7 +38,7 @@ export default function FixedBottomNavigation() {
 					/>
 					<BottomNavigationAction
 						label='Profil'
-						icon={<AccountCircleIcon sx={{ color: 'black' }} />}
+						icon={<AccountCircleIcon sx={{ color: 'black' }} navigate to />}
 					/>
 				</BottomNavigation>
 			</Paper>

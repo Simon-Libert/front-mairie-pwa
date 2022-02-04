@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Alerte from './pages/Alerte';
 import Profile from './pages/Profile';
-import MyForm from './pages/Register';
+import MyRegisterForm from './pages/Register';
 
 import './App.css';
 
@@ -16,7 +16,7 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/form-alert' element={<Alerte />} />
 				<Route path='/profile' element={<Profile />} />
-				<Route path='/register' element={<MyForm />} />
+				<Route path='/register' element={<MyRegisterForm />} />
 				<Route path='*' element={<Navigate replace to='/' />} />
 			</Routes>
 		</BrowserRouter>
