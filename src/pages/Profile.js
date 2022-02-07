@@ -3,9 +3,10 @@ import PrimarySearchAppBar from '../components/nav/AppBar';
 
 const Profile = () => {
 	return (
-		<div>
+		<>
+			<h1>mon profil</h1>
 			<PrimarySearchAppBar />
-		</div>
+		</>
 	);
 };
 

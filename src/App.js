@@ -14,7 +14,7 @@ function App() {
 			<Routes>
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
-				<Route path='/form-alert' element={<Alerte />} />
+				<Route path='/alert-form' element={<Alerte />} />
 				<Route path='/profile' element={<Profile />} />
 				<Route path='/register' element={<MyRegisterForm />} />
 				<Route path='*' element={<Navigate replace to='/' />} />

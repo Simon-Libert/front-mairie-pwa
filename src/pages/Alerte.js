@@ -6,11 +6,14 @@ import AlertForm from '../components/forms/AlertForm';
 const Alerte = () => {
 	const form = (event) => {};
 	return (
-		<FormProvider {...form}>
-			<PrimarySearchAppBar />
+		<>
+			<h1>Alerte</h1>
+			<FormProvider {...form}>
+				<PrimarySearchAppBar />
 
-			<AlertForm />
-		</FormProvider>
+				<AlertForm />
+			</FormProvider>
+		</>
 	);
 };
 

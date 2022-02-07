@@ -7,10 +7,13 @@ const MyRegisterForm = () => {
 	const form = (event) => {};
 
 	return (
-		<FormProvider {...form}>
-			<PrimarySearchAppBar />
-			<RegisterForm />
-		</FormProvider>
+		<>
+			<h1>Inscription</h1>
+			<FormProvider {...form}>
+				<PrimarySearchAppBar />
+				<RegisterForm />
+			</FormProvider>
+		</>
 	);
 };
 export default MyRegisterForm;

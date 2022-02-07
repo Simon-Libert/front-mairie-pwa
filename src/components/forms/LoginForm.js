@@ -17,7 +17,7 @@ const schema = yup
 			.min(6)
 			.max(15)
 			.matches(
-				/^[0-9A-Za-z]*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][0-9a-zA-Z]*$/gim,
+				/^[0-9A-Za-z]*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?][0-9a-zA-Z]*$/gim,
 				'Le mot de passe doit contenir au moins une majuscule et un caractère spécial'
 			)
 			.required('Champ requis'),
@@ -35,20 +35,21 @@ export default function LoginForm() {
 
 	const onSubmit = (data) => {
 		console.log(data);
-		navigate('/'); // faire un axios post pour envoyer les données à l'api
+		navigate('/profile'); // faire un axios post pour envoyer les données à l'api
 	};
 
 	let navigate = useNavigate();
 
 	return (
 		<Paper
-			elevation={1}
+			elevation={3}
 			sx={{
-				my: '50%',
+				my: '25%',
 				mx: '3%',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
+				opacity: 0.9,
 			}}>
 			<div className='MyLoginForm'>
 				<Box
@@ -62,15 +63,11 @@ export default function LoginForm() {
 					}}
 					noValidate
 					autoComplete='off'>
-					<div>
+					<>
 						<Controller
 							name='email'
 							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
+							render={({ field: { value, onChange }, fieldState: { error } }) => (
 								<TextField
 									required
 									id='standard-required'
@@ -87,17 +84,12 @@ export default function LoginForm() {
 						<Controller
 							name='password'
 							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
+							render={({ field: { value, onChange }, fieldState: { error } }) => (
 								<TextField
 									required
 									id='standard-required'
 									label='Mot de passe'
 									type='password'
-									f
 									variant='standard'
 									value={value}
 									onChange={onChange}
@@ -111,10 +103,7 @@ export default function LoginForm() {
 							name='passwordConfirm'
 							control={control}
 							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
+							render={({ field: { value, onChange }, fieldState: { error } }) => (
 								<TextField
 									required
 									id='standard-password-required'
@@ -129,7 +118,7 @@ export default function LoginForm() {
 							)}
 							rules={{ required: 'Merci de confirmer votre password.' }}
 						/>
-					</div>
+					</>
 					<LoginButton />
 				</Box>
 			</div>

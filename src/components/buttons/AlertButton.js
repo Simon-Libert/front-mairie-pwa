@@ -6,28 +6,23 @@ import { useNavigate } from 'react-router';
 const MyButton = styled(Button)`
 	background-color: #faf287;
 	color: black;
-
-	drop-shadow: 0px 5px 5px 0px #000000;
 	&:hover {
 		background-color: #e0af53;
 	}
-
 	font-weight: bold;
 `;
 
-const HomeButton = () => {
-	let navigate = useNavigate();
+const AlertButton = () => {
 	return (
 		<MyButton
 			variant='contained'
 			size='large'
 			type='submit'
 			value='Submit'
-			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}
-			onClick={() => navigate('/register')}>
-			m'inscrire
+			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}>
+			Valider
 		</MyButton>
 	);
 };
 
-export default HomeButton;
+export default AlertButton;

@@ -1,6 +1,6 @@
-import axios from 'axios';
+/* import axios from 'axios';
 
-const API_URL = 'http://localhost:8000/api/';
+const API_URL = 'https://powerful-sea-00313.herokuapp.com';
 
 const login = async (username, password) => {
 	const response = await axios.post(API_URL + 'login', {
@@ -28,3 +28,4 @@ const logService = {
 };
 
 export default logService;
+ */

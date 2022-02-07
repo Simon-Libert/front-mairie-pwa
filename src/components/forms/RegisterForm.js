@@ -31,7 +31,7 @@ const schema = yup
 			.min(6)
 			.max(15)
 			.matches(
-				/^[0-9A-Za-z]*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?][0-9a-zA-Z]*$/gim,
+				/^[0-9A-Za-z]*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?][0-9a-zA-Z]*$/gim,
 				'Le mot de passe doit contenir au moins une majuscule et un caractère spécial'
 			)
 			.required('Champ requis'),
@@ -42,27 +42,28 @@ const schema = yup
 	})
 	.required();
 
-export default function FormRegister() {
+export default function RegisterForm() {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	const onSubmit = (data) => {
 		console.log(data);
-		navigate('/'); // faire un axios post pour envoyer les données à l'api
+		navigate('/profile'); // faire un axios post pour envoyer les données à l'api
 	};
 
 	let navigate = useNavigate();
 
 	return (
 		<Paper
-			elevation={1}
+			elevation={3}
 			sx={{
-				my: '50%',
+				my: '25%',
 				mx: '3%',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
+				opacity: '0.9',
 			}}>
 			<div className='MyFormRegister'>
 				<Box
@@ -210,10 +211,7 @@ export default function FormRegister() {
 							name='email'
 							control={control}
 							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
+							render={({ field: { value, onChange }, fieldState: { error } }) => (
 								<TextField
 									required
 									id='standard-required'
@@ -231,16 +229,12 @@ export default function FormRegister() {
 							name='password'
 							control={control}
 							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
+							render={({ field: { value, onChange }, fieldState: { error } }) => (
 								<TextField
 									required
 									id='standard-required'
 									label='Mot de passe'
 									type='password'
-									f
 									variant='standard'
 									value={value}
 									onChange={onChange}

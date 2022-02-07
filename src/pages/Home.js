@@ -1,14 +1,19 @@
-import PrimarySearchAppBar from '../components/nav/AppBar';
 import React from 'react';
 import HomeButton from '../components/buttons/HomeButton';
+import HomeLogButton from '../components/buttons/HomeLogButton';
 
 const Home = () => {
 	return (
-		<div>
+		<>
 			<h1>SIMPLONVILLE</h1>
-			<p>Devenons citoyens-acteurs de notre ville !</p>
-			<HomeButton />
-		</div>
+			<div className='home'>
+				<p class='blocktext'>Devenons citoyens-acteurs de notre ville !</p>
+			</div>
+			<div className='home-buttons'>
+				<HomeButton />
+				<HomeLogButton />
+			</div>
+		</>
 	);
 };
 

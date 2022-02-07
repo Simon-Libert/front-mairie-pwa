@@ -7,10 +7,13 @@ const Login = () => {
 	const form = (event) => {};
 
 	return (
-		<FormProvider {...form}>
-			<PrimarySearchAppBar />
-			<LoginForm />
-		</FormProvider>
+		<>
+			<h1>Connexion</h1>
+			<FormProvider {...form}>
+				<PrimarySearchAppBar />
+				<LoginForm />
+			</FormProvider>
+		</>
 	);
 };
 

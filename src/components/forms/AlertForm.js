@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
@@ -7,7 +8,7 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import AlertButton from '../buttons/AlertButton';
 import { Paper } from '@mui/material';
-import UploadButtons from '../buttons/CameraButton';
+import { MenuItem } from '@mui/material';
 
 const schema = yup
 	.object()
@@ -28,6 +29,7 @@ const AlertForm = () => {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 	});
+	const [type, setType] = useState('');
 
 	const onSubmit = (data) => {
 		console.log(data);
@@ -36,128 +38,133 @@ const AlertForm = () => {
 
 	let navigate = useNavigate();
 
+	const handleChange = (event) => {
+		setType(event.target.value);
+	};
+
 	return (
 		<Paper
-			elevation={1}
+			elevation={3}
 			sx={{
-				my: '50%',
+				my: '20%',
 				mx: '3%',
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
+				opacity: '0.9',
 			}}>
-			<div className='MyLoginForm'>
+			<div className='MyAlertForm'>
 				<Box
 					onSubmit={handleSubmit(onSubmit)}
 					component='form'
 					sx={{
 						'& .MuiTextField-root': {
 							m: 1,
-							width: '39ch',
-							justifyContent: 'center',
+							width: '96%',
 						},
 					}}
 					noValidate
 					autoComplete='off'>
-					<div>
-						<Controller
-							name='type'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='filled-select-currency-native-required'
-									select
-									label='Type'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-									SelectedProps={{
-										native: true,
-									}}>
-									<option value>Voirie</option>
-									<option value>Stationnement</option>
-									<option value>Travaux</option>
-									<option value>Autre</option>
-								</TextField>
-							)}
-							rules={{ required: "Merci de sélectionner un type d'alerte." }}
-						/>
-						<Controller
-							name='description'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='filled-multiline-flexible-required'
-									label='Description'
-									multiline
-									maxRows={4}
-									type='text'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de renseigner une description.' }}
-						/>
-						<Controller
-							name='date'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Date'
-									type='Date'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de renseigner la date.' }}
-						/>
-						<Controller
-							name='adress'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Adresse'
-									type='text'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de renseigner une adresse.' }}
-						/>
-					</div>
+					<Controller
+						name='type'
+						control={control}
+						defaultValue=''
+						render={({
+							field: { value, onChange, onBlur, ref },
+							fieldState: { error },
+						}) => (
+							<TextField
+								required
+								id='filled-select-currency-native-required'
+								select
+								label='Type'
+								variant='standard'
+								value={type}
+								onChange={handleChange}
+								error={!!error}
+								helperText={error ? error.message : null}
+								selectedprops={{
+									native: true,
+								}}>
+								<MenuItem value>Voirie</MenuItem>
+								<MenuItem value>Stationnement</MenuItem>
+								<MenuItem value>Travaux</MenuItem>
+								<MenuItem value>Autre</MenuItem>
+							</TextField>
+						)}
+						rules={{ required: "Merci de sélectionner un type d'alerte." }}
+					/>
+
+					<Controller
+						name='description'
+						control={control}
+						defaultValue=''
+						render={({
+							field: { value, onChange, onBlur, ref },
+							fieldState: { error },
+						}) => (
+							<TextField
+								required
+								id='filled-multiline-flexible-required'
+								label='Description'
+								multiline
+								maxRows={4}
+								type='text'
+								variant='standard'
+								value={value}
+								onChange={onChange}
+								error={!!error}
+								helperText={error ? error.message : null}
+							/>
+						)}
+						rules={{ required: 'Merci de renseigner une description.' }}
+					/>
+					<Controller
+						name='date'
+						control={control}
+						defaultValue=''
+						render={({
+							field: { value, onChange, onBlur, ref },
+							fieldState: { error },
+						}) => (
+							<TextField
+								required
+								id='standard-required'
+								InputLabel
+								shrink='Date'
+								type='Date'
+								variant='standard'
+								value={value}
+								onChange={onChange}
+								error={!!error}
+								helperText={error ? error.message : null}
+							/>
+						)}
+						rules={{ required: 'Merci de renseigner la date.' }}
+					/>
+					<Controller
+						name='adress'
+						control={control}
+						defaultValue=''
+						render={({
+							field: { value, onChange, onBlur, ref },
+							fieldState: { error },
+						}) => (
+							<TextField
+								required
+								id='standard-required'
+								label='Adresse'
+								type='text'
+								variant='standard'
+								value={value}
+								onChange={onChange}
+								error={!!error}
+								helperText={error ? error.message : null}
+							/>
+						)}
+						rules={{ required: 'Merci de renseigner une adresse.' }}
+					/>
+
 					<AlertButton />
 				</Box>
 			</div>

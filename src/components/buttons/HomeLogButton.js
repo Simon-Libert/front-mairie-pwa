@@ -15,7 +15,7 @@ const MyButton = styled(Button)`
 	font-weight: bold;
 `;
 
-const HomeButton = () => {
+const HomeLogButton = () => {
 	let navigate = useNavigate();
 	return (
 		<MyButton
@@ -24,10 +24,10 @@ const HomeButton = () => {
 			type='submit'
 			value='Submit'
 			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}
-			onClick={() => navigate('/register')}>
-			m'inscrire
+			onClick={() => navigate('/login')}>
+			connection
 		</MyButton>
 	);
 };
 
-export default HomeButton;
+export default HomeLogButton;
