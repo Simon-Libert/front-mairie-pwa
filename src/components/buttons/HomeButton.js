@@ -20,9 +20,10 @@ const HomeButton = () => {
 	return (
 		<MyButton
 			variant='contained'
-			size='small'
+			size='medium'
 			type='submit'
 			value='Submit'
+			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}
 			onClick={() => navigate('/register')}>
 			Valider
 		</MyButton>

@@ -16,7 +16,8 @@ const MyButton = styled(Button)`
 
 const ButtonValidation = () => {
 	return (
-		<MyButton variant='contained' size='small' type='submit' value='Submit'>
+		<MyButton variant='contained' size='medium' type='submit' value='Submit'>
+			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}
 			Valider
 		</MyButton>
 	);

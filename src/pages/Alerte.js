@@ -1,45 +1,16 @@
 import React from 'react';
 import PrimarySearchAppBar from '../components/nav/AppBar';
+import { FormProvider } from 'react-hook-form';
+import AlertForm from '../components/forms/AlertForm';
 
 const Alerte = () => {
+	const form = (event) => {};
 	return (
-		<div>
+		<FormProvider {...form}>
 			<PrimarySearchAppBar />
-			<div className='form-component'>
-				<div className='form-container'>
-					<form>
-						<select>
-							<option value='stationnement'>Stationnement</option>
-							<option value='travaux'>Travaux</option>
-							<option selected value='voirie'>
-								Voirie
-							</option>
-							<option value='autre'>Autre</option>
-						</select>
 
-						<label>
-							<input
-								type='text'
-								placeholder='Description'
-								id='desc
-              '
-							/>
-						</label>
-						<label>
-							<input type='text' placeholder='Date' id='date' />
-						</label>
-						<label>
-							<input type='text' placeholder='Heure' id='time' />
-						</label>
-						<label>
-							<input type='text' placeholder='Adresse' id='adress' />
-						</label>
-
-						<input type='submit' value='Envoyer' />
-					</form>
-				</div>
-			</div>
-		</div>
+			<AlertForm />
+		</FormProvider>
 	);
 };
 

@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import RegisterButton from '../buttons/RegisterButton';
 import { useNavigate } from 'react-router';
+import { Paper } from '@mui/material';
 
 const schema = yup
 	.object()
@@ -54,217 +55,227 @@ export default function FormRegister() {
 	let navigate = useNavigate();
 
 	return (
-		<div className='MyFormRegister'>
-			<Box
-				onSubmit={handleSubmit(onSubmit)}
-				component='form'
-				sx={{
-					'& .MuiTextField-root': {
-						m: 1,
-						width: '25ch',
-					},
-				}}
-				noValidate
-				autoComplete='off'>
-				<div>
-					<Controller
-						name='firstName'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Nom'
-								variant='standard'
-								color='secondary'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-								ref={ref}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre nom.' }}
-					/>
+		<Paper
+			elevation={1}
+			sx={{
+				my: '50%',
+				mx: '3%',
+				display: 'flex',
+				flexDirection: 'column',
+				justifyContent: 'center',
+			}}>
+			<div className='MyFormRegister'>
+				<Box
+					onSubmit={handleSubmit(onSubmit)}
+					component='form'
+					sx={{
+						'& .MuiTextField-root': {
+							m: 1,
+							width: '39ch',
+						},
+					}}
+					noValidate
+					autoComplete='off'>
+					<div>
+						<Controller
+							name='firstName'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Nom'
+									variant='standard'
+									color='secondary'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+									ref={ref}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre nom.' }}
+						/>
 
-					<Controller
-						name='lastName'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Prénom'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre prénom.' }}
-					/>
-					<Controller
-						name='address'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Adresse'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre adresse.' }}
-					/>
-					<Controller
-						name='postCode'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Code Postal'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre code postal.' }}
-					/>
-					<Controller
-						name='city'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Ville'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre ville.' }}
-					/>
-					<Controller
-						name='phone'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Téléphone'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre numéro de téléphone.' }}
-					/>
-					<Controller
-						name='email'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Email'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre email.' }}
-					/>
-					<Controller
-						name='password'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-required'
-								label='Mot de passe'
-								type='password'
-								f
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de renseigner votre password.' }}
-					/>
-					<Controller
-						name='passwordConfirm'
-						control={control}
-						defaultValue=''
-						render={({
-							field: { value, onChange, onBlur, ref },
-							fieldState: { error },
-						}) => (
-							<TextField
-								required
-								id='standard-password-required'
-								label='Confirmation mot de passe'
-								type='password'
-								variant='standard'
-								value={value}
-								onChange={onChange}
-								error={!!error}
-								helperText={error ? error.message : null}
-							/>
-						)}
-						rules={{ required: 'Merci de confirmer votre password.' }}
-					/>
-				</div>
-				<RegisterButton />
-			</Box>
-		</div>
+						<Controller
+							name='lastName'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Prénom'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre prénom.' }}
+						/>
+						<Controller
+							name='address'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Adresse'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre adresse.' }}
+						/>
+						<Controller
+							name='postCode'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Code Postal'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre code postal.' }}
+						/>
+						<Controller
+							name='city'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Ville'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre ville.' }}
+						/>
+						<Controller
+							name='phone'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Téléphone'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre numéro de téléphone.' }}
+						/>
+						<Controller
+							name='email'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Email'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre email.' }}
+						/>
+						<Controller
+							name='password'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-required'
+									label='Mot de passe'
+									type='password'
+									f
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de renseigner votre password.' }}
+						/>
+						<Controller
+							name='passwordConfirm'
+							control={control}
+							defaultValue=''
+							render={({
+								field: { value, onChange, onBlur, ref },
+								fieldState: { error },
+							}) => (
+								<TextField
+									required
+									id='standard-password-required'
+									label='Confirmation mot de passe'
+									type='password'
+									variant='standard'
+									value={value}
+									onChange={onChange}
+									error={!!error}
+									helperText={error ? error.message : null}
+								/>
+							)}
+							rules={{ required: 'Merci de confirmer votre password.' }}
+						/>
+					</div>
+					<RegisterButton />
+				</Box>
+			</div>
+		</Paper>
 	);
 }
