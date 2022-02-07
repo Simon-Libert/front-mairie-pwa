@@ -13,7 +13,6 @@ import { MenuItem } from '@mui/material';
 const schema = yup
 	.object()
 	.shape({
-		type: yup.string().required('Champ requis'),
 		description: yup.string().required('Champ requis'),
 		date: yup
 			.date()
@@ -130,9 +129,7 @@ const AlertForm = () => {
 							<TextField
 								required
 								id='standard-required'
-								Input
-								label
-								shrink='Date'
+								label='Date'
 								type='Date'
 								variant='standard'
 								value={value}

@@ -58,8 +58,9 @@ export default function RegisterForm() {
 		<Paper
 			elevation={3}
 			sx={{
-				my: '25%',
+				my: '-10%',
 				mx: '3%',
+
 				display: 'flex',
 				flexDirection: 'column',
 				justifyContent: 'center',
