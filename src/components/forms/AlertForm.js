@@ -29,7 +29,7 @@ const AlertForm = () => {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 	});
-	const [type, setType] = useState('');
+	const [type, setType] = useState(1);
 
 	const onSubmit = (data) => {
 		console.log(data);
@@ -86,10 +86,10 @@ const AlertForm = () => {
 								selectedprops={{
 									native: true,
 								}}>
-								<MenuItem value>Voirie</MenuItem>
-								<MenuItem value>Stationnement</MenuItem>
-								<MenuItem value>Travaux</MenuItem>
-								<MenuItem value>Autre</MenuItem>
+								<MenuItem value={1}>Voirie</MenuItem>
+								<MenuItem value={2}>Stationnement</MenuItem>
+								<MenuItem value={3}>Travaux</MenuItem>
+								<MenuItem value={4}>Autre</MenuItem>
 							</TextField>
 						)}
 						rules={{ required: "Merci de sélectionner un type d'alerte." }}
@@ -130,7 +130,8 @@ const AlertForm = () => {
 							<TextField
 								required
 								id='standard-required'
-								InputLabel
+								Input
+								label
 								shrink='Date'
 								type='Date'
 								variant='standard'
