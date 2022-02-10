@@ -10,8 +10,8 @@ const Login = () => {
 		<>
 			<h1>Connexion</h1>
 			<FormProvider {...form}>
-				<PrimarySearchAppBar />
 				<LoginForm />
+				<PrimarySearchAppBar />
 			</FormProvider>
 		</>
 	);

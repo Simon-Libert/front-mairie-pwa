@@ -9,9 +9,8 @@ const Alerte = () => {
 		<>
 			<h1>Alerte</h1>
 			<FormProvider {...form}>
-				<PrimarySearchAppBar />
-
 				<AlertForm />
+				<PrimarySearchAppBar />
 			</FormProvider>
 		</>
 	);

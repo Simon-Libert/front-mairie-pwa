@@ -5,8 +5,11 @@ import Login from './pages/Login';
 import Alerte from './pages/Alerte';
 import Profile from './pages/Profile';
 import MyRegisterForm from './pages/Register';
-
+import ProfileAlert from './pages/ProfileAlert';
+import ProfileInfos from './pages/ProfileInfos';
+import ProfileSecurity from './pages/ProfileSecurity';
 import './App.css';
+import { createTheme, ThemeProvider } from '@mui/material';
 
 function App() {
 	return (
@@ -16,6 +19,9 @@ function App() {
 				<Route path='/login' element={<Login />} />
 				<Route path='/alert-form' element={<Alerte />} />
 				<Route path='/profile' element={<Profile />} />
+				<Route path='/profile-alerts' element={<ProfileAlert />} />
+				<Route path='/profile-infos' element={<ProfileInfos />} />
+				<Route path='/profile-security' element={<ProfileSecurity />} />
 				<Route path='/register' element={<MyRegisterForm />} />
 				<Route path='*' element={<Navigate replace to='/' />} />
 			</Routes>

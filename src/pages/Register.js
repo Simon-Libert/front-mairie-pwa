@@ -10,8 +10,8 @@ const MyRegisterForm = () => {
 		<>
 			<h1>Inscription</h1>
 			<FormProvider {...form}>
-				<PrimarySearchAppBar />
 				<RegisterForm />
+				<PrimarySearchAppBar />
 			</FormProvider>
 		</>
 	);

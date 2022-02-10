@@ -5,11 +5,9 @@ import { TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import RegisterButton from '../buttons/RegisterButton';
 import { useNavigate } from 'react-router';
 import { Paper } from '@mui/material';
-
-const baseURL = 'https://powerful-sea-00313.herokuapp.com/api/v1';
+import ModifInfosBtn from '../buttons/ModifInfosBtn';
 
 const schema = yup
 	.object()
@@ -29,37 +27,17 @@ const schema = yup
 			.max(10)
 			.required('Champ requis'),
 		email: yup.string().email('Merci de saisir un email valide.').required('Champ requis'),
-		password: yup
-			.string()
-			.min(6)
-			.max(15)
-			.matches(
-				/^[0-9A-Za-z]*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?][0-9a-zA-Z]*$/gim,
-				'Le mot de passe doit contenir au moins une majuscule et un caractère spécial'
-			)
-			.required('Champ requis'),
-		passwordConfirm: yup
-			.string()
-			.oneOf([yup.ref('password'), null], 'Les mots de passe doivent correspondre')
-			.required('Champ requis'),
 	})
 	.required();
 
-export default function RegisterForm() {
+export default function FormInfo() {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 	});
 
 	const onSubmit = (data) => {
-		axios
-			.post(`${baseURL}/users/register`, data)
-			.then((response) => {
-				console.log(response);
-				navigate('/profile');
-			})
-			.catch((error) => {
-				console.log(error);
-			}); // faire un axios post pour envoyer les données à l'api
+		console.log(data);
+		navigate('/profile'); // faire un axios post pour envoyer les données à l'api
 	};
 
 	let navigate = useNavigate();
@@ -112,7 +90,6 @@ export default function RegisterForm() {
 							)}
 							rules={{ required: 'Merci de renseigner votre nom.' }}
 						/>
-
 						<Controller
 							name='lastName'
 							control={control}
@@ -236,49 +213,8 @@ export default function RegisterForm() {
 							)}
 							rules={{ required: 'Merci de renseigner votre email.' }}
 						/>
-						<Controller
-							name='password'
-							control={control}
-							defaultValue=''
-							render={({ field: { value, onChange }, fieldState: { error } }) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Mot de passe'
-									type='password'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre password.' }}
-						/>
-						<Controller
-							name='passwordConfirm'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-password-required'
-									label='Confirmation mot de passe'
-									type='password'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de confirmer votre password.' }}
-						/>
 					</div>
-					<RegisterButton />
+					<ModifInfosBtn />
 				</Box>
 			</div>
 		</Paper>

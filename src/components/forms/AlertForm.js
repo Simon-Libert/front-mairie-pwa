@@ -20,7 +20,7 @@ const schema = yup
 				return new Date();
 			})
 			.required('Champ requis'),
-		adress: yup.string().required('Champ requis'),
+		alertAddress: yup.string().required('Champ requis'),
 	})
 	.required();
 
@@ -45,10 +45,11 @@ const AlertForm = () => {
 		<Paper
 			elevation={3}
 			sx={{
+				zIndex: 1,
 				my: '20%',
-				mx: '3%',
+				mx: '10%',
 				display: 'flex',
-				flexDirection: 'column',
+				flexFlow: 'column wrap',
 				justifyContent: 'center',
 				opacity: '0.9',
 			}}>
@@ -59,7 +60,7 @@ const AlertForm = () => {
 					sx={{
 						'& .MuiTextField-root': {
 							m: 1,
-							width: '96%',
+							width: '33ch',
 						},
 					}}
 					noValidate
@@ -141,7 +142,7 @@ const AlertForm = () => {
 						rules={{ required: 'Merci de renseigner la date.' }}
 					/>
 					<Controller
-						name='adress'
+						name='alertAddress'
 						control={control}
 						defaultValue=''
 						render={({

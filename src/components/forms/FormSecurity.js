@@ -5,16 +5,12 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useNavigate } from 'react-router';
-import LoginButton from '../buttons/LoginButton';
 import { Paper } from '@mui/material';
-import axios from 'axios';
-
-const baseURL = 'https://powerful-sea-00313.herokuapp.com/api/v1';
+import ModifInfosBtn from '../buttons/ModifInfosBtn';
 
 const schema = yup
 	.object()
 	.shape({
-		email: yup.string().email('Merci de saisir un email valide.').required('Champ requis'),
 		password: yup
 			.string()
 			.min(6)
@@ -31,18 +27,14 @@ const schema = yup
 	})
 	.required();
 
-export default function LoginForm() {
+export default function FormSecurity() {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit = (email, password) => {
-		axios.post(`${baseURL}/users/login`, email, password, {
-			headers: {
-				Authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
-			},
-		});
-		navigate('/profile');
+	const onSubmit = (data) => {
+		console.log(data);
+		navigate('/profile'); // faire un axios post pour envoyer les données à l'api
 	};
 
 	let navigate = useNavigate();
@@ -72,23 +64,6 @@ export default function LoginForm() {
 					noValidate
 					autoComplete='off'>
 					<>
-						<Controller
-							name='email'
-							control={control}
-							render={({ field: { value, onChange }, fieldState: { error } }) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Email'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre email.' }}
-						/>
 						<Controller
 							name='password'
 							control={control}
@@ -127,7 +102,7 @@ export default function LoginForm() {
 							rules={{ required: 'Merci de confirmer votre password.' }}
 						/>
 					</>
-					<LoginButton />
+					<ModifInfosBtn />
 				</Box>
 			</div>
 		</Paper>

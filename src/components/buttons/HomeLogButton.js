@@ -23,7 +23,7 @@ const HomeLogButton = () => {
 			value='Submit'
 			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}
 			onClick={() => navigate('/login')}>
-			connection
+			connexion
 		</MyButton>
 	);
 };

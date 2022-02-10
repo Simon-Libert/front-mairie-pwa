@@ -3,17 +3,16 @@ import { Button } from '@mui/material';
 import styled from '@emotion/styled';
 
 const MyButton = styled(Button)`
-	background-color: #faf287;
-	z-index: 1000000;
+	background-color: #fb4c26;
 	color: black;
 	drop-shadow: 0px 5px 5px 0px #000000;
 	&:hover {
-		background-color: #e0af53;
+		background-color: #c62828;
 	}
 	font-weight: bold;
 `;
 
-const RegisterButton = () => {
+const ModifInfosBtn = () => {
 	return (
 		<MyButton
 			variant='contained'
@@ -21,9 +20,9 @@ const RegisterButton = () => {
 			type='submit'
 			value='Submit'
 			sx={{ my: '1em', mx: 'calc(50% - 50px)' }}>
-			Valider
+			Modifier
 		</MyButton>
 	);
 };
 
-export default RegisterButton;
+export default ModifInfosBtn;
