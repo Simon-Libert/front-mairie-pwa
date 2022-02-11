@@ -15,7 +15,7 @@ const MyButton = styled(Button)`
 	align-content: center;
 	justify-content: center;
 	position: absolute;
-	top: 43%;
+	top: 45%;
 `;
 
 export default function ProfileButton() {

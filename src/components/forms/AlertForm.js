@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
@@ -9,6 +10,8 @@ import { useNavigate } from 'react-router';
 import AlertButton from '../buttons/AlertButton';
 import { Paper } from '@mui/material';
 import { MenuItem } from '@mui/material';
+
+const baseURL = 'https://powerful-sea-00313.herokuapp.com/api/v1';
 
 const schema = yup
 	.object()
@@ -31,8 +34,17 @@ const AlertForm = () => {
 	const [type, setType] = useState(1);
 
 	const onSubmit = (data) => {
-		console.log(data);
-		navigate('/profile'); // faire un axios post pour envoyer les données à l'api
+		axios
+			.post(`${baseURL}/reports`, data)
+			.then((response) => {
+				alert(
+					'Votre alerte a bien été enregistrée, vous allez être redirigé vers votre page profil'
+				);
+				navigate('/profile');
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	let navigate = useNavigate();

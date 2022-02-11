@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import RegisterButton from '../buttons/RegisterButton';
 import { useNavigate } from 'react-router';
 import { Paper } from '@mui/material';
+import { Grid } from '@mui/material';
 
 const baseURL = 'https://powerful-sea-00313.herokuapp.com/api/v1';
 
@@ -65,222 +66,234 @@ export default function RegisterForm() {
 	let navigate = useNavigate();
 
 	return (
-		<Paper
-			elevation={3}
-			sx={{
-				zIndex: '1',
-				my: '25%',
-				mx: '10%',
-				display: 'flex',
-				flexFlow: 'column wrap',
-				justifyContent: 'center',
-				opacity: '0.9',
-			}}>
-			<div className='MyFormRegister'>
-				<Box
-					onSubmit={handleSubmit(onSubmit)}
-					component='form'
+		<Grid container>
+			<Grid item xs={12} sm={6} md={3}>
+				<Paper
+					elevation={3}
 					sx={{
-						'& .MuiTextField-root': {
-							m: 1,
-							width: '33ch',
-						},
-					}}
-					noValidate
-					autoComplete='off'>
-					<div>
-						<Controller
-							name='firstName'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Nom'
-									variant='standard'
-									color='secondary'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-									ref={ref}
+						zIndex: '1',
+						my: '25%',
+						mx: '10%',
+						display: 'flex',
+						flexFlow: 'column wrap',
+						justifyContent: 'center',
+						opacity: '0.9',
+					}}>
+					<div className='MyFormRegister'>
+						<Box
+							onSubmit={handleSubmit(onSubmit)}
+							component='form'
+							sx={{
+								'& .MuiTextField-root': {
+									m: 1,
+									width: '33ch',
+								},
+							}}
+							noValidate
+							autoComplete='off'>
+							<div>
+								<Controller
+									name='firstName'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Nom'
+											variant='standard'
+											color='secondary'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+											ref={ref}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre nom.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre nom.' }}
-						/>
 
-						<Controller
-							name='lastName'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Prénom'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='lastName'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Prénom'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre prénom.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre prénom.' }}
-						/>
-						<Controller
-							name='userAddress'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Adresse'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='userAddress'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Adresse'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre adresse.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre adresse.' }}
-						/>
-						<Controller
-							name='postCode'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Code Postal'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='postCode'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Code Postal'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre code postal.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre code postal.' }}
-						/>
-						<Controller
-							name='city'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Ville'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='city'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Ville'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre ville.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre ville.' }}
-						/>
-						<Controller
-							name='phone'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Téléphone'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='phone'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Téléphone'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{
+										required: 'Merci de renseigner votre numéro de téléphone.',
+									}}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre numéro de téléphone.' }}
-						/>
-						<Controller
-							name='email'
-							control={control}
-							defaultValue=''
-							render={({ field: { value, onChange }, fieldState: { error } }) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Email'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='email'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Email'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre email.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre email.' }}
-						/>
-						<Controller
-							name='password'
-							control={control}
-							defaultValue=''
-							render={({ field: { value, onChange }, fieldState: { error } }) => (
-								<TextField
-									required
-									id='standard-required'
-									label='Mot de passe'
-									type='password'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='password'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-required'
+											label='Mot de passe'
+											type='password'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de renseigner votre password.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de renseigner votre password.' }}
-						/>
-						<Controller
-							name='passwordConfirm'
-							control={control}
-							defaultValue=''
-							render={({
-								field: { value, onChange, onBlur, ref },
-								fieldState: { error },
-							}) => (
-								<TextField
-									required
-									id='standard-password-required'
-									label='Confirmation mot de passe'
-									type='password'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
+								<Controller
+									name='passwordConfirm'
+									control={control}
+									defaultValue=''
+									render={({
+										field: { value, onChange, onBlur, ref },
+										fieldState: { error },
+									}) => (
+										<TextField
+											required
+											id='standard-password-required'
+											label='Confirmation mot de passe'
+											type='password'
+											variant='standard'
+											value={value}
+											onChange={onChange}
+											error={!!error}
+											helperText={error ? error.message : null}
+										/>
+									)}
+									rules={{ required: 'Merci de confirmer votre password.' }}
 								/>
-							)}
-							rules={{ required: 'Merci de confirmer votre password.' }}
-						/>
+							</div>
+							<RegisterButton />
+						</Box>
 					</div>
-					<RegisterButton />
-				</Box>
-			</div>
-		</Paper>
+				</Paper>
+			</Grid>
+		</Grid>
 	);
 }
