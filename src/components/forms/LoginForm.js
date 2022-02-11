@@ -24,10 +24,6 @@ const schema = yup
 				'Le mot de passe doit contenir au moins une majuscule et un caractère spécial'
 			)
 			.required('Champ requis'),
-		passwordConfirm: yup
-			.string()
-			.oneOf([yup.ref('password'), null], 'Les mots de passe doivent correspondre')
-			.required('Champ requis'),
 	})
 	.required();
 
@@ -36,13 +32,18 @@ export default function LoginForm() {
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit = (email, password) => {
-		axios.post(`${baseURL}/users/login`, email, password, {
-			headers: {
-				Authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
-			},
-		});
-		navigate('/profile');
+	const onSubmit = (data) => {
+		axios
+			.post(`${baseURL}/users/login`, data)
+			.then((response) => {
+				console.log(response);
+				window.localStorage.setItem('token', response.data.token);
+				alert('Connexion réussi avec succès, vous allez être redirigé vers votre profil');
+				navigate('/profile');
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	let navigate = useNavigate();
@@ -106,25 +107,6 @@ export default function LoginForm() {
 								/>
 							)}
 							rules={{ required: 'Merci de renseigner votre password.' }}
-						/>
-						<Controller
-							name='passwordConfirm'
-							control={control}
-							defaultValue=''
-							render={({ field: { value, onChange }, fieldState: { error } }) => (
-								<TextField
-									required
-									id='standard-password-required'
-									label='Confirmation mot de passe'
-									type='password'
-									variant='standard'
-									value={value}
-									onChange={onChange}
-									error={!!error}
-									helperText={error ? error.message : null}
-								/>
-							)}
-							rules={{ required: 'Merci de confirmer votre password.' }}
 						/>
 					</>
 					<LoginButton />

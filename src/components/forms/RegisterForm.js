@@ -54,12 +54,12 @@ export default function RegisterForm() {
 		axios
 			.post(`${baseURL}/users/register`, data)
 			.then((response) => {
-				console.log(response);
+				alert('enregistrement réussi');
 				navigate('/profile');
 			})
 			.catch((error) => {
 				console.log(error);
-			}); // faire un axios post pour envoyer les données à l'api
+			});
 	};
 
 	let navigate = useNavigate();
