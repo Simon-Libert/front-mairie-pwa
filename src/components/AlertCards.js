@@ -18,7 +18,7 @@ export default function AlertCards() {
 
 	useEffect(() => {
 		axios
-			.get('https://powerful-sea-00313.herokuapp.com/api/v1/reports/:userId ')
+			.get('https://powerful-sea-00313.herokuapp.com/api/v1/reports/user/:id ')
 			.then((res) => setNotes(res.data.results));
 	}, []);
 

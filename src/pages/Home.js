@@ -7,7 +7,7 @@ const Home = () => {
 		<>
 			<h1>SIMPLONVILLE</h1>
 			<div className='home'>
-				<p class='blocktext'>Devenons citoyens-acteurs de notre ville !</p>
+				<p className='blocktext'>Devenons citoyens-acteurs de notre ville !</p>
 			</div>
 			<div className='home-buttons'>
 				<HomeButton />
