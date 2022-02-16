@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 import { Paper } from '@mui/material';
 import { Grid } from '@mui/material';
 
-const baseURL = 'https://powerful-sea-00313.herokuapp.com/api/v1';
+const baseURL = `${process.env.REACT_APP_API_URL}`;
 
 const schema = yup
 	.object()

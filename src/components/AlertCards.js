@@ -17,16 +17,20 @@ export default function AlertCards() {
 	]);
 
 	useEffect(() => {
+		console.log(process.env.REACT_APP_API_URL);
 		axios
-			.get('https://powerful-sea-00313.herokuapp.com/api/v1/reports/user/:id ')
-			.then((res) => setNotes(res.data.results));
+			.get(`${process.env.REACT_APP_API_URL}/reports/user`, {
+				headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+			})
+			.then((res) => setNotes(res.data.reports))
+			.catch((err) => console.log(err));
 	}, []);
 
 	return (
 		<Grid container>
 			<Grid item xs={12} sm={6} md={3}>
-				{notes.map((note) => (
-					<NoteCard data={note} />
+				{notes.map((note, key) => (
+					<NoteCard key={key} data={note} />
 				))}
 			</Grid>
 		</Grid>

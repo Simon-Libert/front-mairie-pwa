@@ -11,7 +11,7 @@ import AlertButton from '../buttons/AlertButton';
 import { Paper } from '@mui/material';
 import { MenuItem } from '@mui/material';
 
-const baseURL = 'https://powerful-sea-00313.herokuapp.com/api/v1';
+const baseURL = `${process.env.REACT_APP_API_URL}`;
 
 const schema = yup
 	.object()
@@ -31,11 +31,12 @@ const AlertForm = () => {
 	const { handleSubmit, control } = useForm({
 		resolver: yupResolver(schema),
 	});
-	const [type, setType] = useState(1);
 
 	const onSubmit = (data) => {
 		axios
-			.post(`${baseURL}/reports`, data)
+			.post(`${baseURL}/reports`, data, {
+				headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+			})
 			.then((response) => {
 				alert(
 					'Votre alerte a bien été enregistrée, vous allez être redirigé vers votre page profil'
@@ -49,15 +50,11 @@ const AlertForm = () => {
 
 	let navigate = useNavigate();
 
-	const handleChange = (event) => {
-		setType(event.target.value);
-	};
-
 	return (
 		<Paper
 			elevation={3}
 			sx={{
-				zIndex: 1,
+				zIndex: 2,
 				my: '20%',
 				mx: '10%',
 				display: 'flex',
@@ -91,17 +88,17 @@ const AlertForm = () => {
 								select
 								label='Type'
 								variant='standard'
-								value={type}
-								onChange={handleChange}
+								value={value}
+								onChange={onChange}
 								error={!!error}
 								helperText={error ? error.message : null}
 								selectedprops={{
 									native: true,
 								}}>
-								<MenuItem value={1}>Voirie</MenuItem>
-								<MenuItem value={2}>Stationnement</MenuItem>
-								<MenuItem value={3}>Travaux</MenuItem>
-								<MenuItem value={4}>Autre</MenuItem>
+								<MenuItem value={'voirie'}>Voirie</MenuItem>
+								<MenuItem value={'stationnement'}>Stationnement</MenuItem>
+								<MenuItem value={'travaux'}>Travaux</MenuItem>
+								<MenuItem value={'autre'}>Autre</MenuItem>
 							</TextField>
 						)}
 						rules={{ required: "Merci de sélectionner un type d'alerte." }}
