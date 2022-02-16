@@ -7,6 +7,7 @@ import * as yup from 'yup';
 import { useNavigate } from 'react-router';
 import { Paper } from '@mui/material';
 import ModifInfosBtn from '../buttons/ModifInfosBtn';
+import axios from 'axios';
 
 const schema = yup
 	.object()
@@ -33,8 +34,19 @@ export default function FormSecurity() {
 	});
 
 	const onSubmit = (data) => {
-		console.log(data);
-		navigate('/profile'); // faire un axios post pour envoyer les données à l'api
+		axios
+			.put(`${process.env.REACT_APP_API_URL}/users/update`, data, {
+				headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+			})
+			.then((response) => {
+				alert(
+					'Votre mot de passe a bien été modifié, vous allez être redirigé vers votre page profil'
+				);
+				navigate('/profile');
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	};
 
 	let navigate = useNavigate();

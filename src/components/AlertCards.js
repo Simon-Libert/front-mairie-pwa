@@ -17,7 +17,6 @@ export default function AlertCards() {
 	]);
 
 	useEffect(() => {
-		console.log(process.env.REACT_APP_API_URL);
 		axios
 			.get(`${process.env.REACT_APP_API_URL}/reports/user`, {
 				headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },

@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router';
 import { Paper } from '@mui/material';
 import { Grid } from '@mui/material';
 
-const baseURL = `${process.env.REACT_APP_API_URL}`;
-
 const schema = yup
 	.object()
 	.shape({
@@ -53,7 +51,7 @@ export default function RegisterForm() {
 
 	const onSubmit = (data) => {
 		axios
-			.post(`${baseURL}/users/register`, data)
+			.post(`${process.env.REACT_APP_API_URL}/users/register`, data)
 			.then((response) => {
 				alert('enregistrement réussi');
 				navigate('/profile');

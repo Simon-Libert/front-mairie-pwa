@@ -1,6 +1,5 @@
 import * as React from 'react';
 import axios from 'axios';
-import { useState } from 'react';
 import Box from '@mui/material/Box';
 import { TextField } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
@@ -10,8 +9,6 @@ import { useNavigate } from 'react-router';
 import AlertButton from '../buttons/AlertButton';
 import { Paper } from '@mui/material';
 import { MenuItem } from '@mui/material';
-
-const baseURL = `${process.env.REACT_APP_API_URL}`;
 
 const schema = yup
 	.object()
@@ -34,7 +31,7 @@ const AlertForm = () => {
 
 	const onSubmit = (data) => {
 		axios
-			.post(`${baseURL}/reports`, data, {
+			.post(`${process.env.REACT_APP_API_URL}/reports`, data, {
 				headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
 			})
 			.then((response) => {

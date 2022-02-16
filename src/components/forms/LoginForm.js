@@ -9,8 +9,6 @@ import LoginButton from '../buttons/LoginButton';
 import { Paper } from '@mui/material';
 import axios from 'axios';
 
-const baseURL = `${process.env.REACT_APP_API_URL}`;
-
 const schema = yup
 	.object()
 	.shape({
@@ -34,7 +32,7 @@ export default function LoginForm() {
 
 	const onSubmit = (data) => {
 		axios
-			.post(`${baseURL}/users/login`, data)
+			.post(`${process.env.REACT_APP_API_URL}/users/login`, data)
 			.then((response) => {
 				console.log(response);
 				window.localStorage.setItem('token', response.data.token);
