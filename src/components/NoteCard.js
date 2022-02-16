@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardHeader, CardContent, IconButton, Typography } from '@mui/material';
+import { Card, Typography } from '@mui/material';
 import { CardMedia } from '@mui/material';
 
 export default function NoteCard({ data }) {

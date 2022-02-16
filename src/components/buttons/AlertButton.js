@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import styled from '@emotion/styled';
-import { useNavigate } from 'react-router';
 
 const MyButton = styled(Button)`
 	background-color: #faf287;

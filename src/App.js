@@ -9,7 +9,6 @@ import ProfileAlert from './pages/ProfileAlert';
 import ProfileInfos from './pages/ProfileInfos';
 import ProfileSecurity from './pages/ProfileSecurity';
 import './App.css';
-import { createTheme, ThemeProvider } from '@mui/material';
 
 function App() {
 	return (
