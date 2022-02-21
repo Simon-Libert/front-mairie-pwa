@@ -1,6 +1,7 @@
 import React from 'react';
 import HomeButton from '../components/buttons/HomeButton';
 import HomeLogButton from '../components/buttons/HomeLogButton';
+import PrimarySearchAppBar from '../components/nav/AppBar';
 
 const Home = () => {
 	return (
@@ -12,6 +13,7 @@ const Home = () => {
 			<div className='home-buttons'>
 				<HomeButton />
 				<HomeLogButton />
+				<nav>{localStorage.getItem('token') ? <PrimarySearchAppBar /> : null}</nav>
 			</div>
 		</>
 	);

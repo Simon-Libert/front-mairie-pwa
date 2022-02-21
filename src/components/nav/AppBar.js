@@ -15,20 +15,6 @@ export default function FixedBottomNavigation() {
 	const [value, setValue] = React.useState(0);
 	const ref = React.useRef(null);
 
-	/* const [currentUser, setCurrentUser] = useState(undefined);
-
-	useEffect(() => {
-		const user = AuthService.getCurrentUser();
-
-		if (user) {
-			setCurrentUser(user);
-		}
-	}, []);
-
-	const logOut = () => {
-		AuthService.logout();
-	}; */
-
 	return (
 		<Box sx={{ pb: 7 }} ref={ref}>
 			<CssBaseline />
@@ -53,10 +39,12 @@ export default function FixedBottomNavigation() {
 						label='Alerte'
 						icon={<AddAlertIcon sx={{ color: 'black' }} />}
 					/>
+
 					<BottomNavigationAction
+						onClick={() => localStorage.clear('token')}
 						component={Link}
-						to='/login'
-						label='Login'
+						to='/'
+						label='Logout'
 						icon={<VpnKeyIcon sx={{ color: 'black' }} />}
 					/>
 					<BottomNavigationAction
