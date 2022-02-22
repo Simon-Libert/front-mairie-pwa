@@ -50,13 +50,12 @@ export default function LoginForm() {
 		<Paper
 			elevation={3}
 			sx={{
-				zIndex: '1',
 				my: '25%',
 				mx: '10%',
 				display: 'flex',
 				flexFlow: 'column wrap',
-				justifyContent: 'center',
 				opacity: 0.9,
+				placeItems: 'center',
 			}}>
 			<div className='MyLoginForm'>
 				<Box
@@ -65,7 +64,7 @@ export default function LoginForm() {
 					sx={{
 						'& .MuiTextField-root': {
 							m: 1,
-							width: '33ch',
+							width: '30ch',
 						},
 					}}
 					noValidate

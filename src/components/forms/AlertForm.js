@@ -51,12 +51,11 @@ const AlertForm = () => {
 		<Paper
 			elevation={3}
 			sx={{
-				zIndex: 2,
-				my: '20%',
+				my: '25%',
 				mx: '10%',
 				display: 'flex',
 				flexFlow: 'column wrap',
-				justifyContent: 'center',
+				placeItems: 'center',
 				opacity: '0.9',
 			}}>
 			<div className='MyAlertForm'>
@@ -66,7 +65,7 @@ const AlertForm = () => {
 					sx={{
 						'& .MuiTextField-root': {
 							m: 1,
-							width: '33ch',
+							width: '30ch',
 						},
 					}}
 					noValidate

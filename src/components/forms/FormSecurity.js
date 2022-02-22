@@ -55,12 +55,11 @@ export default function FormSecurity() {
 		<Paper
 			elevation={3}
 			sx={{
-				zIndex: '1',
 				my: '25%',
 				mx: '10%',
 				display: 'flex',
 				flexFlow: 'column wrap',
-				justifyContent: 'center',
+				placeItems: 'center',
 				opacity: 0.9,
 			}}>
 			<div className='MyLoginForm'>
@@ -70,7 +69,7 @@ export default function FormSecurity() {
 					sx={{
 						'& .MuiTextField-root': {
 							m: 1,
-							width: '33ch',
+							width: '32ch',
 						},
 					}}
 					noValidate
